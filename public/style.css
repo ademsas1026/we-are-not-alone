@@ -1,21 +1,119 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Karla', sans-serif;
 }
 
-a {
-  text-decoration: none;
+#mapid {
+  height: 100%;
+  display: flex;
+  background-color: #292929;
+  font-family: 'Karla', sans-serif;
 }
 
-label {
-  display: block;
+#actualMap {
+  display: flex;
+  flex-direction: column;
+  color: aliceblue;
+  font-family: 'Karla', sans-serif;
 }
 
-nav a {
-  display: inline-block;
-  margin: 1em;
+#actualMap h1 {
+  width: 150%;
+  padding-top: 1em;
+  padding-left: 2.1em;
 }
 
-form div {
-  margin: 1em;
-  display: inline-block;
+#actualMap h2 {
+  width: 150%;
+  padding-left: 2.5em
+}
+
+#actualMap h3 {
+  width: 150%;
+  padding-left: 3em
+}
+
+#popup {
+  color: black
+}
+
+#showFormButton {
+  font-family: 'Karla', sans-serif;
+  margin-top: 30em;
+  margin-left: 5em;
+  border-color: #1F3553;
+  border-width: 0.5em;
+  color: #1F3553
+}
+
+
+/* for chart */
+
+#chartRender {
+  max-height: 25%;
+  background-color: magenta
+}
+
+#chartLabel {
+  padding-top: 1em
+}
+
+.graph {
+  display: flex;
+  flex-direction: column;
+  padding-left: 2em
+}
+
+#wordFreqChart {
+  height: 25%
+}
+
+#ChartLabel {
+  align-self: center;
+  z-index: 5
+}
+
+.VictoryContainer {
+  height: 25%
+}
+
+#chartAndForm {
+  background-color: #292929;
+  color: aliceblue;
+  width: 40%
+}
+
+
+/* add sighting form */
+
+#addSightingForm {
+  display: flex;
+  flex-direction: column;
+  color: aliceblue;
+  padding-top: 1em;
+  padding-left: 5em;
+  width: 300%;
+  height: 30%;
+  transition: all 0.5s ease-in-out
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding-top: 1em
+}
+
+#formLabels {
+  margin-top: 7em
+}
+
+#addSightingButton {
+  font-family: 'Karla', sans-serif;
+  border-color: #1F3553;
+  border-width: 0.5em;
+  color: #1F3553;
+  margin-top: 10em;
+  margin-left: 1em;
+  width: 204.19px;
+  height: auto
 }

@@ -1,15 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import {Navbar} from './components'
-import Routes from './routes'
+import  { MapView }from './components'
 
 const App = () => {
   return (
-    <div>
-      <Navbar />
-      <Routes />
-    </div>
-  )
-}
+    <MapView />
+  );
+};
 
-export default App
+export default App;
