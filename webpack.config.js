@@ -1,14 +1,17 @@
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const path = require('path')
 const isDev = process.env.NODE_ENV === 'development'
 
 module.exports = {
   mode: isDev ? 'development' : 'production',
   entry: [
-    '@babel/polyfill', // enables async-await
+    '@babel/polyfill', // enables async-await 
     './client/index.js'
-  ],
+    ], 
+    
   output: {
-    path: __dirname,
-    filename: './public/bundle.js'
+    path: path.join(__dirname, '/public'),
+    filename: 'bundle.js'
   },
   devtool: 'source-map',
   module: {
@@ -19,7 +22,7 @@ module.exports = {
         loader: 'babel-loader'
       }, 
       { 
-        test: /node_modules[\/\\]react-geocoder[\/\\].*\.js/, 
+        test: /node_modules[/\\]react-geocoder[/\\].*\.js/, 
         loader: 'babel', 
         query: {presets:['react','es2015']}
       },  
@@ -34,6 +37,13 @@ module.exports = {
             }
           }
         ]
+      }, 
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader"
+        })
       }   
     ]
   }

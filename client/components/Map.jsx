@@ -30,7 +30,7 @@ class MapView extends Component {
     else this.setState({ latitude: event.latlng.lat, longitude: event.latlng.lng })
   } 
 
-  handleClick(event){
+  handleClick(){
     this.setState({ clicked: !this.state.clicked })
   }
 

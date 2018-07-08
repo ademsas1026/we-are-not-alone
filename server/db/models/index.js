@@ -1,4 +1,4 @@
-const Sighting = require('./sightings');
+const Sighting = require('./sightings')
 
 module.exports = { 
   Sighting

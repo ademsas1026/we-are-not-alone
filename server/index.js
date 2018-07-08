@@ -1,53 +1,48 @@
-const path = require('path');
-const express = require('express');
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
-const db = require('./db');
-const PORT = process.env.PORT || 8080;
-const app = express();
-const socketio = require('socket.io');
-module.exports = app;
+const path = require('path')
+const express = require('express')
+const morgan = require('morgan')
+const bodyParser = require('body-parser')
+const db = require('./db')
+const PORT = process.env.PORT || 8080
+const app = express()
+module.exports = app
 
 
 
 const createApp = () => {
   // logging middleware
-  app.use(morgan('dev'));
+  app.use(morgan('dev'))
 
   // body parsing middleware
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json())
+  app.use(bodyParser.urlencoded({ extended: true }))
 
   // static file-serving middleware
-  app.use(express.static(path.join(__dirname, '..', 'public')));
+  app.use(express.static(path.join(__dirname, '..', 'public')))
 
   //routing middleware
-  app.use('/api', require('./api'));
+  app.use('/api', require('./api'))
   
   // sends index.html
   app.use('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public/index.html'));
+    res.sendFile(path.join(__dirname, '..', 'public/index.html'))
   });
 
   
   // error handling endware
   app.use((err, req, res, next) => {
-    console.error(err);
-    console.error(err.stack);
-    res.status(err.status || 500).send(err.message || 'Internal server error.');
-  });
-};
+    console.error(err)
+    console.error(err.stack)
+    res.status(err.status || 500).send(err.message || 'Internal server error.')
+  })
+}
 
 const startListening = () => {
   // start listening (and create a 'server' object representing our server)
-  const server = app.listen(PORT, () => console.log(`Mixing it up on port ${PORT}`));
+  app.listen(PORT, () => console.log(`Mixing it up on port ${PORT}`))
+}
 
-  // set up our socket control center
-  const io = socketio(server);
-  require('./socket')(io);
-};
-
-const syncDb = () => db.sync();
+const syncDb = () => db.sync()
 
 // This evaluates as true when this file is run directly from the command line,
 // i.e. when we say 'node server/index.js' (or 'nodemon server/index.js', or 'nodemon server', etc)
@@ -58,5 +53,5 @@ if (require.main === module) {
     .then(createApp)
     .then(startListening);
 } else {
-  createApp();
+  createApp()
 }

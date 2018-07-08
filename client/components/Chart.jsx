@@ -20,7 +20,7 @@ export default class Chart extends React.Component {
     const defaultData = mostCommonlyUsedWordsOverall.map((wordObject, i) => {
       return {x: i, y: wordObject.word}
     } )
-    console.log('default data: ', defaultData)
+    
     
     const data = mostCommonlyUsedWordsPerCluster.length 
       ? mostCommonlyUsedWordsPerCluster.map((wordObject, i) => {
@@ -29,7 +29,7 @@ export default class Chart extends React.Component {
       : mostCommonlyUsedWordsOverall.map((wordObject, i) => {
         return {x: i, y: wordObject.word}
       } )
-    console.log('data: ', data)
+    
     return (
       <div className="graph">
         <h1 id="chartLabel">Top 10 Words</h1>

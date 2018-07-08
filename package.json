@@ -1,5 +1,5 @@
 {
-  "name": "not-alone",
+  "name": "we-are-not-alone",
   "version": "1.0.0",
   "description": "An interactive visualization of UFO sightings in the US since the 1950s",
   "engines": {
@@ -48,7 +48,9 @@
     "esm": "^3.0.63",
     "express": "^4.14.1",
     "express-session": "^1.15.1",
+    "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.11",
+    "fs": "0.0.1-security",
     "history": "^4.6.3",
     "k-means": "^1.0.0",
     "leaflet": "^1.3.1",
