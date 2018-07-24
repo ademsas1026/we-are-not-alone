@@ -52,10 +52,10 @@ class MapView extends Component {
           id="actualMap"
           
           >
-          <h1 className="col-xs-2 control-label">Not Alone</h1>
-          <h2 className="col-xs-2 control-label">An Interactive Visualization of UFO Sightings in the US</h2>
-          <h3 className="col-xs-2 control-label">1949 - 2013</h3>
-          <h3 className="col-xs-2 control-label">click map...if you dare</h3>
+          <h1 className="col-xs-2 control-label" style={{zIndex: 1000}}>Not Alone</h1>
+          <h2 className="col-xs-2 control-label" style={{zIndex: 1000}}>An Interactive Visualization of UFO Sightings in the US</h2>
+          <h3 className="col-xs-2 control-label" style={{zIndex: 1000}}>1949 - 2013</h3>
+          <h3 className="col-xs-2 control-label" style={{zIndex: 1000}}>click map...if you dare</h3>
           <TileLayer  
             url="https://api.mapbox.com/styles/v1/ademsas/cjggt8ilb002k2rqw269apfqt/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWRlbXNhcyIsImEiOiJjamdncThncmIwMGw4MnhxbWNybnV1cDMwIn0.DmUIWxfIPjHyD-nu9GVqrw"
             attribution="data courtesy of the National UFO Reporting Center (NUFORC)"
