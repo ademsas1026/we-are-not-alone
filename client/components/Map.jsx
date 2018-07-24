@@ -26,6 +26,7 @@ class MapView extends Component {
 
   
   loadCluster(event){
+    console.log('loading cluster!!!')
     if (!this.state.clicked) this.props.loadSightingsByCluster(event.latlng.lat, event.latlng.lng)
     else this.setState({ latitude: event.latlng.lat, longitude: event.latlng.lng })
   } 
@@ -38,7 +39,7 @@ class MapView extends Component {
   render() {
     const { center, zoom, latitude, longitude } = this.state;
     const { sightings } = this.props;
-    
+    console.log('loading the map!!!')
     const mostCommonlyUsedWords = mostCommonWords(sightings).slice(0, 10);
     return (
       <div id="mapid">
