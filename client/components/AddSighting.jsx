@@ -75,7 +75,7 @@ class AddSighting extends Component {
             <ControlLabel className="col-xs-2 control-label" id="formLabels"><h2><b>Longitude <h4>(click map)</h4></b></h2>
                 <FormControl value={longitude} type="text"/>
             </ControlLabel>
-            <Button onClick={this.handleSubmit} className="col-xs-2 control-label" id="addSightingButton" type="submit"><h4>We Are Not Alone</h4></Button>
+            <Button onClick={this.handleSubmit} className="col-xs-2 control-label" id="addSightingButton" type="submit" style={{height: "10vh"}}><h4>We Are Not Alone</h4></Button>
           </FormGroup>
       </div>
     )

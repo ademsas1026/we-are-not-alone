@@ -67,7 +67,7 @@ class MapView extends Component {
                 </Popup>
               </Marker>
           ))}
-          <Button onClick={this.handleClick} className="col-xs-2 control-label" id="showFormButton"><h4>I, Too, Have Seen</h4></Button>
+          <Button onClick={this.handleClick} className="col-xs-2 control-label" id="showFormButton" style={{zIndex: 1000, width: "12vw"}}><h4>I, Too, Have Seen</h4></Button>
         </Map>
         <div id="chartAndForm">
           {this.state.clicked 
