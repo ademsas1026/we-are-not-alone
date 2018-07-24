@@ -10,7 +10,7 @@ module.exports = app
 
 
 const createApp = () => {
-  console.log('this is the database!', process.env.DATABASE_URL)
+
   // logging middleware
   app.use(morgan('dev'))
 

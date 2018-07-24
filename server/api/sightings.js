@@ -21,6 +21,7 @@ router.post('/', async (req, res, next) => {
 })
 
 router.get('/clusters/:latitude/:longitude', async(req, res, next) => {
+  console.log('this is the database!', process.env.DATABASE_URL)
   const data = await clusterData.catch(next);
   const allLongitudesAndLatitudes = [];
 
