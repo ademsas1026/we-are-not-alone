@@ -11,7 +11,7 @@ let sightings = [];
 
 
 router.get('/', async (req, res, next) => {
-  const sightings = await Sighting.findAll({}).catch(next);
+  sightings = await Sighting.findAll({}).catch(next);
   res.json(sightings);
 })
 
