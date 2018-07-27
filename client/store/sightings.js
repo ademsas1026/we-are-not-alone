@@ -29,7 +29,10 @@ export const loadSightings = () => {
 export const loadSightingsByCluster = (latitude, longitude) => {
   return function thunk(dispatch) {
     return axios.get(`/api/sightings/clusters/${latitude}/${longitude}`)
-      .then(res => res.data)
+      .then(res => {
+        console.log('sightings back from thunk: ', res.data)
+        return res.data
+      })
       .then(sightings => dispatch(getSightings(sightings)))
       .catch(console.error)
   }
