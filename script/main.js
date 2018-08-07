@@ -37,6 +37,7 @@ const go = async () => {
   const sightings = await grabSightings().catch(console.error);
 
   sightings.forEach((sighting, i) => {
+    console.log('this is final matrix: ', finalMatrix)
     const id = finalMatrix[i][0];
     sighting.clusterId = id;
     clusters[id].push(sighting);
