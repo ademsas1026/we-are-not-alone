@@ -36,9 +36,9 @@ const go = async (next) => {
     .map(x => [])
 
   const sightings = await grabSightings(next).catch(next)
-  if (!finalMatrix.length) console.log('final matrix length is: ', finalMatrix.length)
+  if (!finalMatrix) console.log('final matrix is: ', finalMatrix, 'Engine.clusterDataSet is: ', cluster, 'promisified cluster is = kmeans: ', kmeans)
   // push sightings into cluster iff finalMatrix has length
-  if (finalMatrix.length){
+  if (finalMatrix){
     sightings.forEach((sighting, i) => {
     
       const id = finalMatrix[i][0]
