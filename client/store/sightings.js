@@ -38,9 +38,11 @@ const noError = () => ({
 /* --- Thunks --- */
 export const loadSightings = () => async dispatch => {
   try {
-    dispatch(isLoading())
+    //reset error field to false
     dispatch(noError())
+    dispatch(isLoading())
     const { data } = await axios.get(`/api/sightings`)
+    //reset loading field to false
     dispatch(notLoading())
     let sightings = data.slice(0, 100)
     dispatch(getSightings(sightings))
@@ -55,8 +57,11 @@ export const loadSightings = () => async dispatch => {
 
 export const loadSightingsByCluster = (latitude, longitude) => async dispatch => {
   try {
+    //reset error field to false
+    dispatch(noError())
     dispatch(isLoading())
     const { data } = await axios.get(`/api/sightings/clusters/${latitude}/${longitude}`)
+    //reset loading field to false
     dispatch(notLoading())
     dispatch(getSightings(data))
   } catch (err) {
