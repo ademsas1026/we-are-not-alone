@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Sighting } = require('../db/models');
-const clusterData = require('../../script/main');
+const go = require('../../script/main');
 module.exports = router;
 
 let minLat;
@@ -22,7 +22,7 @@ router.post('/', async (req, res, next) => {
 
 router.get('/clusters/:latitude/:longitude', async(req, res, next) => {
   console.log('this is the database!', process.env.DATABASE_URL)
-  const data = await clusterData.catch(next);
+  const data = await go(next).catch(next);
   const allLongitudesAndLatitudes = [];
 
   for (let clusterId=0; clusterId < data.length; clusterId++){

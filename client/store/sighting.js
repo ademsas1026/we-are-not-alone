@@ -1,30 +1,38 @@
 import axios from 'axios';
 
+/*--- Initial State ---*/
+const initialState = {
+  error: false,
+  sighting: {}
+}
 /*--- Action Types ---*/
 const GET_SIGHTING = 'GET_SIGHTING';
+const GOT_ERROR = 'GOT_ERROR'
 
 /* ---- Action Creators --- */
-const getSighting = sighting => {
-  return {
-    type: GET_SIGHTING, 
-    sighting
-  }
-}
+
+const gotError = () => ({
+  type: GOT_ERROR
+})
 
 /* ---- Thunks --- */
-export const addNewSighting = (sighting) => {
-  return function thunk(dispatch) {
-    return axios.post(`/api/sightings`, sighting)
-    .then(res => res.data)
-    .catch(console.error);
+export const addNewSighting = (sighting) => async dispatch => {
+  try {
+    await axios.post(`/api/sightings`, sighting)
+  } catch (err) {
+    dispatch(gotError())
+    console.error(err)
   }
+
 }
 
 /* ---- Reducer--- */
-export default function (state = {}, action){
+export default function (state = initialState, action){
   switch (action.type){
     case GET_SIGHTING:
-      return action.sighting;
+      return {...state, sighting: action.sighting }
+    case GOT_ERROR:
+      return {...state, error: true}
     default:
       return state;
   }

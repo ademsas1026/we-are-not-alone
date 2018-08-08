@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
-import { Typeahead } from 'react-bootstrap-typeahead';
-import {connect} from 'react-redux';
+import React, { Component } from 'react'
+import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap'
+import { Typeahead } from 'react-bootstrap-typeahead'
+import {connect} from 'react-redux'
 
 
-import { addNewSighting } from '../store';
+import { addNewSighting } from '../store'
 
 class AddSighting extends Component {
   constructor(){
-    super();
+    super()
     this.state = {
       date: '', 
       time: '', 
@@ -17,9 +17,9 @@ class AddSighting extends Component {
       shape: '', 
       duration: 0, 
       comments: ''
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(event){
@@ -30,15 +30,15 @@ class AddSighting extends Component {
 
   handleSubmit(event){
     event.preventDefault();
-    const { date, time, hour, minute, city, state, shape, duration, comments } = this.state;
-    const { latitude, longitude } = this.props;
-    const sighting = { date, time, city, state, shape, duration, comments, latitude, longitude };
-    this.props.addNewSighting(sighting);
+    const { date, time, hour, minute, city, state, shape, duration, comments } = this.state
+    const { latitude, longitude } = this.props
+    const sighting = { date, time, city, state, shape, duration, comments, latitude, longitude }
+    this.props.addNewSighting(sighting)
   }
   render() {
-    const { date, time, hour, minute, city, state, shape, duration, comments } = this.state;
-    const states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'CD', 'TN', 'TX', 'UT', 'VI', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'];
-    const { latitude, longitude } = this.props;
+    const { date, time, hour, minute, city, state, shape, duration, comments } = this.state
+    const states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'CD', 'TN', 'TX', 'UT', 'VI', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY']
+    const { latitude, longitude } = this.props
 
     return (
       <div id="addSightingForm">
@@ -85,14 +85,14 @@ class AddSighting extends Component {
 /* --- Container --- */
 const mapDispatch = dispatch => ({
   addNewSighting(sighting){
-    console.log('this is sighting in map dispatch: ', sighting);
+    console.log('this is sighting in map dispatch: ', sighting)
     dispatch(addNewSighting(sighting))
   }
 })
 
-const mapState = state => ({
-  sighting: state.sighting
-})
+// const mapState = state => ({
+//   sighting: state.sighting.sighting
+// })
 
 
-export default connect(mapState, mapDispatch)(AddSighting);
+export default connect(null, mapDispatch)(AddSighting);

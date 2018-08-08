@@ -1,9 +1,9 @@
 const cluster = require('k-means');
 const { Sighting } = require("../server/db/models");
 
-const grabSightings = async() => {
-  const sightingsPromises = await Sighting.findAll({}).catch(console.error);
-  const sightingArrays = await Promise.all(sightingsPromises).catch(console.error);
+const grabSightings = async next => {
+  const sightingsPromises = await Sighting.findAll({}).catch(next);
+  const sightingArrays = await Promise.all(sightingsPromises).catch(next);
   return sightingArrays.map(sightingArray => sightingArray.dataValues);
 }
 
@@ -11,8 +11,8 @@ const grabSightings = async() => {
 const kmeans = (...args) =>
   new Promise(resolve => cluster(...args, resolve));
 
-const pos = async () => {
-  const sightings = await grabSightings().catch(console.error);
+const pos = async (next) => {
+  const sightings = await grabSightings(next).catch(next);
   
   return sightings.map(
     ({latitude: lat, longitude: lng}, i) => [Number(lat), Number(lng)]
@@ -21,8 +21,8 @@ const pos = async () => {
 
 const NUM_CLUSTERS = 20;
 
-const go = async () => {  
-  const posResults = await pos().catch(console.error);
+const go = async (next) => {  
+  const posResults = await pos(next).catch(next);
 
   const {finalMatrix, clusterCenters}
     = await kmeans(posResults, {
@@ -32,11 +32,12 @@ const go = async () => {
 
   const clusters = new Array(NUM_CLUSTERS)
     .fill('x')
-    .map(x => []);
+    .map(x => [])
 
-  const sightings = await grabSightings().catch(console.error);
+  const sightings = await grabSightings(next).catch(next);
 
   sightings.forEach((sighting, i) => {
+    
     const id = finalMatrix[i][0];
     sighting.clusterId = id;
     clusters[id].push(sighting);
@@ -45,4 +46,4 @@ const go = async () => {
   return clusters;
 }
 
-module.exports = go();
+module.exports = go;
