@@ -9,6 +9,7 @@ const initialState = {
 /*--- Action Types ---*/
 const GET_SIGHTINGS = 'GET_SIGHTINGS'
 const GOT_ERROR = 'GOT_ERROR'
+const NO_ERROR = 'NO_ERROR'
 const IS_LOADING = 'IS_LOADING'
 const NOT_LOADING = 'NOT_LOADING'
 
@@ -30,10 +31,15 @@ const gotError = () => ({
   type: GOT_ERROR
 })
 
+const noError = () => ({
+  type: NO_ERROR
+})
+
 /* --- Thunks --- */
 export const loadSightings = () => async dispatch => {
   try {
     dispatch(isLoading())
+    dispatch(noError())
     const { data } = await axios.get(`/api/sightings`)
     dispatch(notLoading())
     let sightings = data.slice(0, 100)
@@ -72,6 +78,8 @@ export default function (state = initialState, action){
       return {...state, isLoading: false}
     case GOT_ERROR:
       return {...state, error: true}
+    case NO_ERROR:
+      return {...state, error: false}
     default:
       return state;
   }
