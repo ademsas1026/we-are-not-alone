@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap'
 import { Map,  Marker, Popup, TileLayer } from 'react-leaflet'
 import { withRouter } from 'react-router-dom'
 
-import { markerIcon, loadingIcon } from '../mapElements/marker'
+import { markerIcon, loadingIcon, errorIcon } from '../mapElements/marker'
 import {  loadSightingsByCluster  } from '../store'
 const { mostCommonWords, allDataCommonWords } = require('../../script/prepData')
 import Chart from './Chart.jsx'
@@ -82,7 +82,7 @@ class MapView extends Component {
             </Marker>
           }
           { this.props.error &&
-            <Marker position={[this.state.latitude, this.state.longitude]} icon={loadingIcon}>
+            <Marker position={[this.state.latitude, this.state.longitude]} icon={errorIcon}>
               <Popup>
                 <span id="popup"><h6>none here yet!</h6></span>
               </Popup>
