@@ -72,12 +72,19 @@ class MapView extends Component {
                 </Popup>
               </Marker>
             ))
-            : <img src='/favicon.ico' />
+            : <img src="/favicon.ico" />
           }
-          { this.props.loading && 
+          { this.props.loading && !this.props.error && 
             <Marker position={[this.state.latitude, this.state.longitude]} icon={loadingIcon}>
               <Popup>
-                <span id="popup"><h6>...they're closer than you think</h6></span>
+                <span id="popup"><h6>...we're closer than you think</h6></span>
+              </Popup>
+            </Marker>
+          }
+          { this.props.error &&
+            <Marker position={[this.state.latitude, this.state.longitude]} icon={loadingIcon}>
+              <Popup>
+                <span id="popup"><h6>none here yet!</h6></span>
               </Popup>
             </Marker>
           }
