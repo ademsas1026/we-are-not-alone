@@ -42,10 +42,9 @@ class MapView extends Component {
 
 
   render() {
-    const { center, zoom, latitude, longitude } = this.state;
-    const { sightings } = this.props;
-    console.log('loading the map!!!', this.props)
-    const mostCommonlyUsedWords = mostCommonWords(sightings).slice(0, 10);
+    const { center, zoom, latitude, longitude } = this.state
+    const { sightings } = this.props
+    const mostCommonlyUsedWords = mostCommonWords(sightings).slice(0, 10)
     return (
       <div id="mapid">
        
